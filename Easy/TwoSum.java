@@ -1,16 +1,17 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer>map = new HashMap<>();
-
+        
+        //Loop to pick the first number
         for (int i = 0; i < nums.length; i++){
-            int complement = target - nums[i];
-
-            if (map.containsKey(complement)){
-                return new int[] { map.get(complement), i};
+            // Loop to pick the second number after the first
+            for (int j = i + 1; j < nums.length; j++) {
+                // If both numbers add up to target, return their indices
+                if (nums[i] + nums[j] == target) {
+                    return new int[] {i, j};
+                }
             }
-
-            map.put(nums[i], i);
         }
+        // If no pair found, return empty array
         return new int[] {};
     }
 }
